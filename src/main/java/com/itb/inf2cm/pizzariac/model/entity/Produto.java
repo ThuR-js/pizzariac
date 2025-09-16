@@ -1,11 +1,28 @@
 package com.itb.inf2cm.pizzariac.model.entity;
 
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "Produto")  // Quando o nome da classe for mesmo nome da tabela, o uso do @Table é "facultativo"
 public class Produto {
+
+
+    @Id  // PK
+    @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private Long id;
+
+    @Column(length = 100, nullable = false)  /// length: qtde de máximo de caracteres, nullable: false (NOT NULL) true (NULL)
     private String nome;
+    @Column(length = 100, nullable = false)
+    private String tipo;
+    @Column(length = 100, nullable = false)
     private String descricao;
+    @Column(columnDefinition = "DECIMAL(5,2)", nullable = true) // DECIMAL(5,2): valor máx R$ 99.999.99
     private double valorCompra;
+    @Column(columnDefinition = "DECIMAL(5,2)", nullable = true)
     private double valorVenda;
+    @Column(nullable = true)
     private int quantidadeEstoque;
     private boolean codStatus;
 
